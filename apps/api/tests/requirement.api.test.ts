@@ -400,3 +400,4 @@ describe('Requirement API Integration Tests', () => {
     expect(getRes.body.data.contact).toBeUndefined(); // Verify contact is NOT leaked in safe response
   });
 });
+

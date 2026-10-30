@@ -41,3 +41,4 @@ process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 if (process.env.NODE_ENV !== 'test') {
   startServer();
 }
+

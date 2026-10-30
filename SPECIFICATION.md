@@ -1643,3 +1643,4 @@ Follow these rules:
 10. Do not introduce Redis, RabbitMQ, microservices, or other infrastructure unless a genuine requirement emerges.
 11. Do not leave TODOs or placeholder implementations in core functionality.
 12. Do not claim deployment or testing success without verification.
+

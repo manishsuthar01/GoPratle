@@ -237,3 +237,4 @@ export const VENUE_ENVIRONMENT_LABELS: Record<VenueEnvironment, string> = {
 
 export const REQUIREMENT_STATUSES = ['submitted', 'in-review', 'matched', 'completed', 'cancelled'] as const;
 export type RequirementStatus = (typeof REQUIREMENT_STATUSES)[number];
+

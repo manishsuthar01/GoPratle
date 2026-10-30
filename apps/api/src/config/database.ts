@@ -47,3 +47,4 @@ export async function disconnectDatabase(): Promise<void> {
   isConnected = false;
   logger.info('MongoDB disconnected cleanly');
 }
+

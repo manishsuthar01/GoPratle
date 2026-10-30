@@ -50,3 +50,4 @@ export function errorHandler(
 
   ApiResponse.error(res, 500, message);
 }
+

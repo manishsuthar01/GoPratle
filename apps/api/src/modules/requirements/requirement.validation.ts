@@ -22,3 +22,4 @@ export const requirementParamsSchema = z.object({
 });
 
 export type RequirementQueryParams = z.infer<typeof requirementQuerySchema>;
+
