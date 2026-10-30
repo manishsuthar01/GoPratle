@@ -321,7 +321,7 @@ export const plannerRequirementCreateSchema = z
     category: z.literal('planner'),
     event: eventDataSchema,
     categoryDetails: plannerDetailsSchema,
-    additionalDetails: plannerAdditionalDetailsSchema,
+    additionalDetails: plannerAdditionalDetailsSchema.default({}),
     contact: contactSchema,
   })
   .strict();
@@ -331,7 +331,7 @@ export const performerRequirementCreateSchema = z
     category: z.literal('performer'),
     event: eventDataSchema,
     categoryDetails: performerDetailsSchema,
-    additionalDetails: performerAdditionalDetailsSchema,
+    additionalDetails: performerAdditionalDetailsSchema.default({}),
     contact: contactSchema,
   })
   .strict();
@@ -341,7 +341,7 @@ export const crewRequirementCreateSchema = z
     category: z.literal('crew'),
     event: eventDataSchema,
     categoryDetails: crewDetailsSchema,
-    additionalDetails: crewAdditionalDetailsSchema,
+    additionalDetails: crewAdditionalDetailsSchema.default({}),
     contact: contactSchema,
   })
   .strict();
