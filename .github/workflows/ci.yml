@@ -1,0 +1,56 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test-and-build:
+    name: Lint, Test and Build Monorepo
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:7.0
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Test & Build Shared Package
+        run: |
+          pnpm --filter @gopratle/shared build
+          pnpm --filter @gopratle/shared test
+
+      - name: Build & Test API Backend
+        env:
+          NODE_ENV: test
+          MONGODB_URI: mongodb://127.0.0.1:27017/gopratle_test
+        run: |
+          pnpm --filter @gopratle/api build
+          pnpm --filter @gopratle/api test
+
+      - name: Build & Test Web Frontend
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:5000/api/v1
+        run: |
+          pnpm --filter @gopratle/web test
+          pnpm --filter @gopratle/web build
