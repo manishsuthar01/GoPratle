@@ -5,6 +5,9 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './lib/**/*.{js,ts,jsx,tsx,mdx}',
+    './apps/web/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './apps/web/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './apps/web/lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
