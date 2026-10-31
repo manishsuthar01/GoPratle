@@ -7,7 +7,6 @@ import {
   Check,
   MapPin,
   Clock,
-  Sparkles,
   Music2,
   Sliders,
   ShieldCheck,
@@ -64,27 +63,13 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-full">
-      {/* Hero Section with Reference Dira-Style Technical Grid & Interactive Card Deck */}
-      <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden border-b border-[#E8E8ED] bg-[#FBFBFC]">
-        {/* Subtle Architectural Plus-Grid Background */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-60"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #ECECEF 1px, transparent 1px),
-              linear-gradient(to bottom, #ECECEF 1px, transparent 1px)
-            `,
-            backgroundSize: '36px 36px',
-            maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 60%, transparent 100%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 60%, transparent 100%)',
-          }}
-        />
-
-        {/* Floating Cursor Pill 1 (Left) */}
-        <div className="hidden lg:flex items-center gap-2 absolute top-32 left-[12%] z-20 animate-bounce duration-1000">
-          <div className="px-3.5 py-1.5 rounded-full bg-[#E8F5E9] border border-[#C8E6C9] text-[#2E7D32] text-xs font-semibold shadow-xs flex items-center gap-1.5 select-none">
-            <span className="w-2 h-2 rounded-full bg-[#2E7D32] animate-pulse" />
+    <div className="flex flex-col min-h-full tech-grid-canvas">
+      {/* Hero Section with Dira-Style Technical Grid & Interactive Card Deck */}
+      <section className="relative pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+        {/* Floating Cursor Pill 1 (Left - Crimson/Brand Token, No Green) */}
+        <div className="hidden lg:flex items-center gap-2 absolute top-20 left-[10%] z-20">
+          <div className="px-3.5 py-1.5 rounded-full bg-[var(--color-primary-light)] border border-[var(--color-primary-border)] text-[var(--color-primary)] text-xs font-semibold shadow-xs flex items-center gap-1.5 select-none">
+            <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse" />
             <span>Event Planner Confirmed</span>
           </div>
           {/* Custom SVG pointer cursor */}
@@ -97,8 +82,8 @@ export default function LandingPage() {
           </svg>
         </div>
 
-        {/* Floating Cursor Pill 2 (Right) */}
-        <div className="hidden lg:flex items-center gap-2 absolute top-28 right-[12%] z-20">
+        {/* Floating Cursor Pill 2 (Right - Warm Coral Token) */}
+        <div className="hidden lg:flex items-center gap-2 absolute top-16 right-[10%] z-20">
           {/* Custom SVG pointer cursor */}
           <svg
             className="w-5 h-5 text-[#1D1D24] rotate-45 drop-shadow-xs"
@@ -132,14 +117,14 @@ export default function LandingPage() {
             </Link>
             <a
               href="#categories"
-              className="text-sm font-semibold text-[#585866] hover:text-[#1D1D24] px-5 py-3 transition-colors rounded-full bg-white/80 border border-[#E8E8ED] hover:bg-white shadow-2xs"
+              className="text-sm font-semibold text-[#585866] hover:text-[#1D1D24] px-5 py-3 transition-colors rounded-full bg-white/90 border border-[#E8E8ED] hover:bg-white shadow-2xs"
             >
               Explore service categories &darr;
             </a>
           </div>
 
-          {/* Fanned-out Card Deck (Reference Style Showcase) */}
-          <div className="relative max-w-4xl mx-auto pt-4 pb-6 sm:pb-12">
+          {/* Fanned-out Card Deck (Dira Reference Showcase) */}
+          <div className="relative max-w-4xl mx-auto pt-4 pb-6 sm:pb-8">
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 relative">
               {/* Card 1: Left Tilted (Planner Spec Card) */}
               <div className="w-full md:w-[320px] bg-white rounded-3xl border border-[#E8E8ED] p-5 shadow-card md:-rotate-6 md:translate-y-6 md:translate-x-8 md:hover:rotate-0 md:hover:translate-y-0 transition-all duration-300 z-10 text-left">
@@ -150,8 +135,8 @@ export default function LandingPage() {
                     </div>
                     <span className="text-xs font-bold text-[#1D1D24]">Wedding & Gala</span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Matched
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[var(--color-primary)] bg-[var(--color-primary-light)] px-2.5 py-0.5 rounded-full border border-[var(--color-primary-border)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)]" /> Matched
                   </span>
                 </div>
 
@@ -224,8 +209,8 @@ export default function LandingPage() {
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-[#585866] pt-1">
-                  <span className="flex items-center gap-1 text-[11px] text-emerald-700 font-semibold">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span className="flex items-center gap-1.5 text-[11px] text-[#1D1D24] font-semibold">
+                    <ShieldCheck className="w-4 h-4 text-[var(--color-primary)]" />
                     Idempotent Key Verified
                   </span>
                   <span className="text-[10px] text-[#8E8E9C]">Mumbai, India</span>
@@ -323,7 +308,7 @@ export default function LandingPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:border-[var(--color-primary)] transition-all rounded-2xl"
+                    className="w-full group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:border-[var(--color-primary)] transition-all rounded-2xl font-semibold"
                   >
                     Post for {cat.title}
                   </Button>
@@ -335,7 +320,7 @@ export default function LandingPage() {
       </section>
 
       {/* 3-Step Process Section */}
-      <section className="py-20 bg-white border-t border-[#E8E8ED]">
+      <section id="how-it-works" className="py-20 bg-white/70 border-t border-[#E8E8ED]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D24] tracking-tight mb-3">
@@ -350,7 +335,7 @@ export default function LandingPage() {
             {steps.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col p-7 rounded-3xl bg-[#FBFBFC] border border-[#E8E8ED]"
+                className="flex flex-col p-7 rounded-3xl bg-white border border-[#E8E8ED] shadow-subtle"
               >
                 <div className="text-2xl font-black text-[var(--color-primary)] mb-3 tracking-tight">
                   {item.step}

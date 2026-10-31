@@ -48,9 +48,9 @@ export default function SuccessPage({ params }: SuccessPageProps) {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center py-16 px-4 sm:px-6">
-      <div className="w-full max-w-lg bg-white rounded-3xl border border-[#E8E8ED] shadow-card p-8 sm:p-10 text-center relative overflow-hidden">
-        {/* Top Decorative accent banner in crimson red */}
+    <div className="flex-1 flex items-center justify-center py-16 px-4 sm:px-6 tech-grid-canvas relative">
+      <div className="w-full max-w-lg bg-white rounded-3xl border border-[#E8E8ED] shadow-card p-8 sm:p-10 text-center relative overflow-hidden z-10">
+        {/* Top Decorative accent banner in signature crimson */}
         <div className="absolute top-0 left-0 right-0 h-2 bg-[var(--color-primary)]" />
 
         {/* Success Icon */}
@@ -78,7 +78,7 @@ export default function SuccessPage({ params }: SuccessPageProps) {
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" /> Copied
+                  <Check className="w-3.5 h-3.5 text-[var(--color-primary)]" /> Copied
                 </>
               ) : (
                 <>

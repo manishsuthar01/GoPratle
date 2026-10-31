@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* Design Tokens from Reference (Mōnchify direction) */
+  /* Design Tokens (Dira & Mōnchify direction) */
   --color-primary: #C93B49;
   --color-primary-hover: #B42E3C;
   --color-primary-active: #9F2431;
@@ -28,9 +28,10 @@
   --color-border-subtle: #F0F0F3;
   --color-border-active: #C93B49;
 
-  /* Status Colors */
-  --color-success: #10B981;
-  --color-success-light: #ECFDF5;
+  /* Status Colors (Unified Brand Crimson & Dark Accents - No Green) */
+  --color-status-active: #C93B49;
+  --color-status-active-bg: #FDF2F3;
+  --color-status-active-border: #F5CCD0;
   --color-error: #E11D48;
   --color-error-light: #FFF1F2;
 
@@ -45,7 +46,7 @@
   /* Shadows */
   --shadow-subtle: 0 1px 3px 0 rgba(29, 29, 36, 0.04);
   --shadow-card: 0 4px 20px -2px rgba(29, 29, 36, 0.05), 0 2px 6px -1px rgba(29, 29, 36, 0.03);
-  --shadow-floating: 0 12px 32px -4px rgba(29, 29, 36, 0.08);
+  --shadow-floating: 0 16px 36px -4px rgba(29, 29, 36, 0.07), 0 4px 12px -2px rgba(29, 29, 36, 0.04);
 }
 
 body {
@@ -56,52 +57,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Architectural technical grid background */
+.tech-grid-canvas {
+  background-color: var(--color-background);
+  background-image: 
+    linear-gradient(to right, #ECECEF 1px, transparent 1px),
+    linear-gradient(to bottom, #ECECEF 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
 /* Custom focus ring matching primary crimson token */
 *:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-/* Floating notched field container */
-.field-container {
-  position: relative;
-  background: #ffffff;
-  border: 1.5px solid var(--color-border);
-  border-radius: 16px;
-  transition: all 0.15s ease-in-out;
-}
-
-.field-container:hover {
-  border-color: #D6D6DC;
-}
-
-.field-container:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.field-container.field-error {
-  border-color: var(--color-error);
-}
-
-.field-label {
-  position: absolute;
-  top: -9px;
-  left: 14px;
-  background: #ffffff;
-  padding: 0 6px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  line-height: 1;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.field-container:focus-within .field-label {
-  color: var(--color-primary);
-}
-
-.field-container.field-error .field-label {
-  color: var(--color-error);
 }

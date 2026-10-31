@@ -8,9 +8,8 @@ export const metadata = {
 
 export default function NewRequirementPage() {
   return (
-    <div className="flex-1 bg-[#FAF9F6] flex flex-col justify-center">
+    <div className="flex-1 tech-grid-canvas flex flex-col justify-center">
       <RequirementWizard />
     </div>
   );
 }
-
