@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useEffect, useState, use } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import {
   CheckCircle2,
   Copy,
@@ -17,13 +18,14 @@ import { fetchRequirement } from '@/lib/api-client';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-interface SuccessPageProps {
-  params: Promise<{ reference: string }>;
-}
-
-export default function SuccessPage({ params }: SuccessPageProps) {
-  const unwrappedParams = use(params);
-  const reference = unwrappedParams.reference;
+export default function SuccessPage() {
+  const routeParams = useParams();
+  const reference =
+    typeof routeParams?.reference === 'string'
+      ? routeParams.reference
+      : Array.isArray(routeParams?.reference)
+        ? routeParams.reference[0]
+        : '';
 
   const [copied, setCopied] = useState(false);
   const [details, setDetails] = useState<any>(null);
