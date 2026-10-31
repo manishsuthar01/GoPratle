@@ -53,17 +53,31 @@ if (env.NODE_ENV !== 'test') {
 // Rate Limiting
 app.use('/api', apiRateLimiter);
 
-// Health Check Endpoint
-app.get('/api/v1/health', (_req, res) => {
+// Root & Health Check Endpoints
+app.get('/', (_req, res) => {
+  ApiResponse.success(res, 'GoPratle API Server is running', {
+    status: 'ok',
+    endpoints: {
+      health: '/api/v1/health',
+      requirements: '/api/v1/requirements',
+    },
+  });
+});
+
+const handleHealth = (_req: express.Request, res: express.Response) => {
   ApiResponse.success(res, 'API is healthy', {
     status: 'ok',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
   });
-});
+};
 
-// Requirements API Routes
+app.get('/api/v1/health', handleHealth);
+app.get('/health', handleHealth);
+
+// Requirements API Routes (both versioned and direct root alias)
 app.use('/api/v1/requirements', requirementRoutes);
+app.use('/requirements', requirementRoutes);
 
 // 404 Handler
 app.use((_req, _res, next) => {

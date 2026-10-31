@@ -1,9 +1,20 @@
 import { RequirementCreateInput, ApiSuccessResponse, ApiErrorResponse } from '@gopratle/shared';
 
-const API_BASE_URL =
+const RAW_API_BASE_URL =
   process.env.API_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
   'http://localhost:5000/api/v1';
+
+function getApiBaseUrl(): string {
+  let url = (RAW_API_BASE_URL || '').trim().replace(/\/+$/, '');
+  if (!url) return 'http://localhost:5000/api/v1';
+  // If the URL already ends with /api/v1 or /api, keep it or normalize to /api/v1
+  if (url.endsWith('/api/v1')) return url;
+  if (url.endsWith('/api')) return `${url}/v1`;
+  return `${url}/api/v1`;
+}
+
+const API_BASE_URL = getApiBaseUrl();
 
 export class ApiClientError extends Error {
   public readonly statusCode: number;
