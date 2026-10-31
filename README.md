@@ -457,3 +457,14 @@ There is currently no high-throughput caching, background worker queue, or cross
 2. **AI-Powered Requirement Parser**: Automatically pre-fill the wizard fields from unformatted organizer emails or voice notes.
 3. **Vendor Bid Matching Engine**: Algorithmic scoring that routes submitted requirements to the top 5 relevant vendors based on verified budget and location proximity.
 
+---
+
+## 12. Copyright and Usage
+
+© 2026 Manish Suthar. All rights reserved.
+
+This repository is shared solely for evaluation of the GoPratle Full-Stack Developer Intern assignment.
+
+No permission is granted to copy, modify, redistribute, or use this code for commercial or other purposes without prior written permission from the author.
+
+
