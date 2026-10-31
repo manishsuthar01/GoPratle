@@ -12,17 +12,18 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variants = {
-    primary: 'bg-primary text-white',
-    accent: 'bg-accent/10 text-accent font-semibold border border-accent/20',
-    secondary: 'bg-slate-100 text-slate-700',
-    success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
-    outline: 'border border-slate-300 text-slate-700',
+    primary: 'bg-[var(--color-primary)] text-white font-medium',
+    accent:
+      'bg-[var(--color-primary-light)] text-[var(--color-primary)] font-semibold border border-[var(--color-primary-border)]',
+    secondary: 'bg-[#F2F2F5] text-[#4A4A56] font-medium',
+    success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium',
+    outline: 'border border-[#E2E2E8] text-[#585866] font-medium bg-white',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
+        'inline-flex items-center px-3 py-1 rounded-full text-xs',
         variants[variant],
         className
       )}
@@ -41,7 +42,7 @@ export function Card({
   return (
     <div
       className={cn(
-        'bg-white rounded-2xl border border-slate-200/80 shadow-subtle p-6 transition-all',
+        'bg-white rounded-3xl border border-[#E8E8ED] shadow-card p-6 sm:p-8 transition-all',
         className
       )}
       {...props}
@@ -50,4 +51,3 @@ export function Card({
     </div>
   );
 }
-

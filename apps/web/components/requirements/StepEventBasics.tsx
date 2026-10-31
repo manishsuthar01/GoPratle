@@ -17,6 +17,7 @@ import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { CategorySelector } from '@/components/requirements/CategorySelector';
 import { FormNavigation } from '@/components/requirements/FormNavigation';
+import { Calendar, MapPin, Building, CalendarDays } from 'lucide-react';
 
 export function StepEventBasics() {
   const { event, category, setEventBasics, setCategory, nextStep } =
@@ -109,6 +110,7 @@ export function StepEventBasics() {
           <Input
             id="location"
             placeholder="e.g. Bangalore, Karnataka"
+            rightIcon={<MapPin className="w-4 h-4" />}
             {...register('location')}
             error={errors.location?.message}
           />
@@ -121,13 +123,14 @@ export function StepEventBasics() {
         <Input
           id="venue"
           placeholder="e.g. Palace Grounds, Hall 3"
+          rightIcon={<Building className="w-4 h-4" />}
           {...register('venue')}
           error={errors.venue?.message}
         />
       </div>
 
       {/* Date Handling: Single vs Multi-Day */}
-      <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-4">
+      <div className="p-5 rounded-2xl bg-[#FBFBFC] border border-[#E8E8ED] space-y-4">
         <div>
           <Label required>Event Duration</Label>
           <div className="grid grid-cols-2 gap-3 mt-1.5">
@@ -137,10 +140,10 @@ export function StepEventBasics() {
                 setValue('isMultiDay', false);
                 setValue('endDate', '');
               }}
-              className={`py-2 px-4 rounded-xl text-xs font-semibold border transition-all ${
+              className={`py-2.5 px-4 rounded-xl text-xs font-semibold border transition-all ${
                 !isMultiDay
-                  ? 'bg-white border-accent text-accent shadow-xs'
-                  : 'bg-transparent border-slate-200 text-slate-600 hover:bg-white/60'
+                  ? 'bg-white border-[var(--color-primary)] text-[var(--color-primary)] shadow-xs'
+                  : 'bg-transparent border-[#E8E8ED] text-[#585866] hover:bg-white'
               }`}
             >
               Single-Day Event
@@ -148,10 +151,10 @@ export function StepEventBasics() {
             <button
               type="button"
               onClick={() => setValue('isMultiDay', true)}
-              className={`py-2 px-4 rounded-xl text-xs font-semibold border transition-all ${
+              className={`py-2.5 px-4 rounded-xl text-xs font-semibold border transition-all ${
                 isMultiDay
-                  ? 'bg-white border-accent text-accent shadow-xs'
-                  : 'bg-transparent border-slate-200 text-slate-600 hover:bg-white/60'
+                  ? 'bg-white border-[var(--color-primary)] text-[var(--color-primary)] shadow-xs'
+                  : 'bg-transparent border-[#E8E8ED] text-[#585866] hover:bg-white'
               }`}
             >
               Multi-Day Event
@@ -159,7 +162,7 @@ export function StepEventBasics() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
           <div>
             <Label htmlFor="startDate" required>
               {isMultiDay ? 'Start Date' : 'Event Date'}
@@ -168,6 +171,7 @@ export function StepEventBasics() {
               id="startDate"
               type="date"
               min={today}
+              rightIcon={<Calendar className="w-4 h-4" />}
               {...register('startDate')}
               error={errors.startDate?.message}
             />
@@ -182,6 +186,7 @@ export function StepEventBasics() {
                 id="endDate"
                 type="date"
                 min={watch('startDate') || today}
+                rightIcon={<CalendarDays className="w-4 h-4" />}
                 {...register('endDate')}
                 error={errors.endDate?.message}
               />
@@ -192,11 +197,11 @@ export function StepEventBasics() {
 
       {/* Requirement Category Selection */}
       <div className="pt-2">
-        <Label required className="text-base font-bold text-slate-900 mb-2">
-          Choose Requirement Category
+        <Label required className="text-sm font-bold text-[#1D1D24] mb-1.5">
+          Requirement Category
         </Label>
-        <p className="text-xs text-slate-500 mb-3">
-          Select what you want to hire. The wizard will customize the next steps accordingly.
+        <p className="text-xs text-[#7E7E8C] mb-3">
+          Select what you want to hire. Questions will automatically adapt.
         </p>
         <Controller
           name="category"
@@ -218,4 +223,3 @@ export function StepEventBasics() {
     </form>
   );
 }
-

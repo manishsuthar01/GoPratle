@@ -18,24 +18,23 @@ export function RequirementWizard() {
   }, []);
 
   if (!mounted) {
-    // Render skeleton while hydrating persisted store to prevent flash
     return (
       <div className="w-full max-w-[800px] mx-auto py-10 px-4 sm:px-6 animate-pulse">
-        <div className="h-4 bg-slate-200 rounded w-1/3 mb-8" />
-        <div className="h-8 bg-slate-200 rounded w-2/3 mb-4" />
-        <div className="h-4 bg-slate-200 rounded w-1/2 mb-12" />
-        <div className="h-64 bg-slate-100 rounded-2xl" />
+        <div className="h-4 bg-[#E8E8ED] rounded w-1/3 mb-8" />
+        <div className="h-8 bg-[#E8E8ED] rounded w-2/3 mb-4" />
+        <div className="h-4 bg-[#E8E8ED] rounded w-1/2 mb-12" />
+        <div className="h-64 bg-[#F2F2F5] rounded-3xl" />
       </div>
     );
   }
 
   return (
     <div className="w-full max-w-[820px] mx-auto py-8 sm:py-12 px-4 sm:px-6">
-      {/* Step Progress Indicator */}
+      {/* Step Progress Indicator (Matching Reference Stepper) */}
       <WizardProgress currentStep={currentStep} onStepClick={setStep} />
 
       {/* Main Form Container Card */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-card p-6 sm:p-10 transition-all">
+      <div className="bg-white rounded-3xl border border-[#E8E8ED] shadow-card p-6 sm:p-10 transition-all">
         {/* Dynamic Contextual Header */}
         <WizardHeader currentStep={currentStep} category={category} />
 
@@ -48,4 +47,3 @@ export function RequirementWizard() {
     </div>
   );
 }
-

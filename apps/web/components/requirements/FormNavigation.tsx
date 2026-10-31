@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface FormNavigationProps {
@@ -36,33 +36,30 @@ export function FormNavigation({
   const label = nextLabel || getDefaultLabel();
 
   return (
-    <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-8 mt-8 border-t border-slate-200">
-      <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-        <ShieldCheck className="w-4 h-4 text-emerald-600" />
-        <span>Draft saved locally</span>
-      </div>
-
-      <div className="flex items-center gap-3 w-full sm:w-auto">
+    <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-6 mt-8 border-t border-[#E8E8ED]">
+      <div>
         {currentStep > 1 && (
           <Button
             type="button"
             variant="outline"
             onClick={onBack}
             disabled={isLoading}
-            className="flex-1 sm:flex-none"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-2xl font-semibold"
           >
             <ArrowLeft className="w-4 h-4 mr-1.5" />
             Back
           </Button>
         )}
+      </div>
 
+      <div className="flex items-center gap-3 w-full sm:w-auto">
         <Button
           type={submitType}
           variant="primary"
           onClick={submitType === 'button' ? onNext : undefined}
           disabled={isNextDisabled || isLoading}
           isLoading={isLoading}
-          className="flex-1 sm:flex-none px-6"
+          className="w-full sm:w-auto px-8 py-2.5 rounded-2xl font-semibold"
         >
           {label}
           {!isLoading && currentStep < totalSteps && (
@@ -73,4 +70,3 @@ export function FormNavigation({
     </div>
   );
 }
-

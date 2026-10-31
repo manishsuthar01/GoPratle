@@ -81,7 +81,7 @@ export function CrewFields() {
       {/* Crew Roles Multi-Select */}
       <div>
         <Label required>Crew Roles Needed</Label>
-        <p className="text-xs text-slate-500 mb-3">
+        <p className="text-xs text-[#7E7E8C] mb-3">
           Select all operational, technical, or logistics roles required for your event.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -92,18 +92,18 @@ export function CrewFields() {
                 key={role}
                 type="button"
                 onClick={() => toggleRole(role)}
-                className={`flex items-center justify-between p-3 rounded-xl border text-left text-xs font-medium transition-all ${
+                className={`flex items-center justify-between p-3.5 rounded-2xl border text-left text-xs font-medium transition-all ${
                   isChecked
-                    ? 'bg-indigo-50/60 border-accent text-accent font-semibold shadow-xs ring-1 ring-accent'
-                    : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50/50'
+                    ? 'bg-[var(--color-primary-light)] border-[var(--color-primary)] text-[var(--color-primary)] font-semibold shadow-xs'
+                    : 'bg-white border-[#E8E8ED] text-[#1D1D24] hover:border-[#D6D6DC]'
                 }`}
               >
                 <span>{CREW_ROLE_LABELS[role]}</span>
                 <div
                   className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${
                     isChecked
-                      ? 'bg-accent border-accent text-white'
-                      : 'border-slate-300 bg-white'
+                      ? 'bg-[var(--color-primary)] border-[var(--color-primary)] text-white'
+                      : 'border-[#D6D6DC] bg-white'
                   }`}
                 >
                   {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -207,4 +207,3 @@ export function CrewFields() {
     </form>
   );
 }
-

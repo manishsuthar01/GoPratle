@@ -9,35 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#FAF9F6',
-        surface: '#FFFFFF',
-        'surface-subtle': '#F4F2EC',
+        background: 'var(--color-background)',
+        surface: {
+          DEFAULT: 'var(--color-surface)',
+          subtle: 'var(--color-surface-subtle)',
+        },
         primary: {
-          DEFAULT: '#0F172A',
-          hover: '#1E293B',
-          foreground: '#FFFFFF',
+          DEFAULT: 'var(--color-primary)',
+          hover: 'var(--color-primary-hover)',
+          active: 'var(--color-primary-active)',
+          light: 'var(--color-primary-light)',
+          border: 'var(--color-primary-border)',
+          foreground: 'var(--color-primary-foreground)',
         },
-        accent: {
-          DEFAULT: '#4F46E5',
-          hover: '#4338CA',
-          light: '#EEF2FF',
-          foreground: '#FFFFFF',
+        text: {
+          main: 'var(--color-text-main)',
+          secondary: 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)',
+          placeholder: 'var(--color-text-placeholder)',
         },
-        muted: {
-          DEFAULT: '#64748B',
-          foreground: '#94A3B8',
-          border: '#E2E8F0',
+        border: {
+          DEFAULT: 'var(--color-border)',
+          subtle: 'var(--color-border-subtle)',
+          active: 'var(--color-border-active)',
         },
       },
       borderRadius: {
-        xl: '12px',
-        '2xl': '16px',
-        '3xl': '20px',
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
+        '2xl': 'var(--radius-2xl)',
+        '3xl': '24px',
       },
       boxShadow: {
-        subtle: '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-        card: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-        floating: '0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+        subtle: 'var(--shadow-subtle)',
+        card: 'var(--shadow-card)',
+        floating: 'var(--shadow-floating)',
       },
     },
   },
@@ -45,4 +53,3 @@ const config: Config = {
 };
 
 export default config;
-

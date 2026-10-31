@@ -19,6 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { FormNavigation } from '@/components/requirements/FormNavigation';
+import { User, Mail, Phone } from 'lucide-react';
 
 export function StepAdditionalDetails() {
   const {
@@ -31,7 +32,6 @@ export function StepAdditionalDetails() {
     prevStep,
   } = useRequirementStore();
 
-  // Combine category additional schema with contact schema
   const additionalSchema =
     category === 'planner'
       ? plannerAdditionalDetailsSchema
@@ -109,8 +109,8 @@ export function StepAdditionalDetails() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
       {/* Category Specific Fields */}
-      <div className="space-y-5">
-        <h3 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2">
+      <div className="space-y-4">
+        <h3 className="text-sm font-bold text-[#1D1D24] border-b border-[#E8E8ED] pb-2">
           {category === 'planner'
             ? 'Planning Style & Constraints'
             : category === 'performer'
@@ -243,7 +243,7 @@ export function StepAdditionalDetails() {
                 <Label htmlFor="reportingInstructions">Reporting Instructions</Label>
                 <Textarea
                   id="reportingInstructions"
-                  placeholder="e.g. Report to Stage Gate 2, ask for John (Production Lead)"
+                  placeholder="e.g. Report to Stage Gate 2, ask for Production Lead"
                   {...register('additional.reportingInstructions' as any)}
                   error={addErrors?.reportingInstructions?.message}
                 />
@@ -265,7 +265,7 @@ export function StepAdditionalDetails() {
 
       {/* General Description & Special Requests */}
       <div className="space-y-4">
-        <h3 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2">
+        <h3 className="text-sm font-bold text-[#1D1D24] border-b border-[#E8E8ED] pb-2">
           General Details
         </h3>
 
@@ -293,13 +293,10 @@ export function StepAdditionalDetails() {
       </div>
 
       {/* Contact Information */}
-      <div className="space-y-4 pt-2">
-        <h3 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2">
+      <div className="space-y-4 pt-1">
+        <h3 className="text-sm font-bold text-[#1D1D24] border-b border-[#E8E8ED] pb-2">
           Contact Information
         </h3>
-        <p className="text-xs text-slate-500 mb-4">
-          Where verified professionals and our team can reach you regarding this requirement.
-        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
@@ -309,6 +306,7 @@ export function StepAdditionalDetails() {
             <Input
               id="contactName"
               placeholder="e.g. Sarah Miller"
+              rightIcon={<User className="w-4 h-4" />}
               {...register('contact.name')}
               error={contactErrors?.name?.message}
             />
@@ -322,6 +320,7 @@ export function StepAdditionalDetails() {
               id="contactEmail"
               type="email"
               placeholder="e.g. sarah@example.com"
+              rightIcon={<Mail className="w-4 h-4" />}
               {...register('contact.email')}
               error={contactErrors?.email?.message}
             />
@@ -335,6 +334,7 @@ export function StepAdditionalDetails() {
               id="contactPhone"
               type="tel"
               placeholder="e.g. 9876543210"
+              rightIcon={<Phone className="w-4 h-4" />}
               {...register('contact.phone')}
               error={contactErrors?.phone?.message}
             />
@@ -350,4 +350,3 @@ export function StepAdditionalDetails() {
     </form>
   );
 }
-

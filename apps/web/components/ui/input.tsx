@@ -5,26 +5,65 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   helperText?: string;
+  floatingLabel?: string;
+  rightIcon?: React.ReactNode;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type = 'text', error, helperText, ...props }, ref) => {
+  (
+    {
+      className,
+      type = 'text',
+      error,
+      helperText,
+      floatingLabel,
+      rightIcon,
+      id,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div className="w-full">
-        <input
-          type={type}
-          ref={ref}
+        <div
           className={cn(
-            'flex h-11 w-full rounded-xl border bg-white px-3.5 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition duration-150',
-            'focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent',
-            'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500',
+            'relative bg-white border rounded-2xl transition-all duration-150',
             error
-              ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-400'
-              : 'border-slate-300 hover:border-slate-400',
-            className
+              ? 'border-rose-400 focus-within:border-rose-500 focus-within:ring-1 focus-within:ring-rose-400'
+              : 'border-[#E8E8ED] hover:border-[#D6D6DC] focus-within:border-[var(--color-primary)] focus-within:ring-1 focus-within:ring-[var(--color-primary)]',
+            floatingLabel ? 'pt-2' : ''
           )}
-          {...props}
-        />
+        >
+          {floatingLabel && (
+            <label
+              htmlFor={id}
+              className="absolute -top-2 left-3.5 bg-white px-1.5 text-[11px] font-semibold text-[#585866] leading-none pointer-events-none z-10"
+            >
+              {floatingLabel}
+            </label>
+          )}
+          <div className="relative flex items-center">
+            <input
+              id={id}
+              type={type}
+              ref={ref}
+              className={cn(
+                'flex h-12 w-full bg-transparent px-4 py-2 text-sm text-[#1D1D24] placeholder:text-[#A6A6B4] transition duration-150 rounded-2xl',
+                'focus:outline-none',
+                'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400',
+                rightIcon ? 'pr-11' : '',
+                className
+              )}
+              {...props}
+            />
+            {rightIcon && (
+              <div className="absolute right-3.5 flex items-center pointer-events-none text-[#8E8E9C]">
+                {rightIcon}
+              </div>
+            )}
+          </div>
+        </div>
+
         {error && (
           <p className="mt-1.5 text-xs text-rose-600 font-medium flex items-center gap-1">
             <svg
@@ -42,11 +81,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
         {!error && helperText && (
-          <p className="mt-1 text-xs text-slate-500">{helperText}</p>
+          <p className="mt-1 text-xs text-[#8E8E9C]">{helperText}</p>
         )}
       </div>
     );
   }
 );
 Input.displayName = 'Input';
-

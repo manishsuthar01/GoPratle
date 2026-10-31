@@ -456,3 +456,4 @@ There is currently no high-throughput caching, background worker queue, or cross
 1. **Transactional Outbox & Asynchronous Notifications**: Add an outbox collection to dispatch confirmation emails to organizers and alerts to vendors.
 2. **AI-Powered Requirement Parser**: Automatically pre-fill the wizard fields from unformatted organizer emails or voice notes.
 3. **Vendor Bid Matching Engine**: Algorithmic scoring that routes submitted requirements to the top 5 relevant vendors based on verified budget and location proximity.
+

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
 
 export interface SelectOption {
   value: string;
@@ -12,25 +13,48 @@ export interface SelectProps
   placeholder?: string;
   error?: string;
   helperText?: string;
+  floatingLabel?: string;
 }
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (
-    { className, options, placeholder = 'Select an option', error, helperText, ...props },
+    {
+      className,
+      options,
+      placeholder = 'Select an option',
+      error,
+      helperText,
+      floatingLabel,
+      id,
+      ...props
+    },
     ref
   ) => {
     return (
       <div className="w-full">
-        <div className="relative">
+        <div
+          className={cn(
+            'relative bg-white border rounded-2xl transition-all duration-150',
+            error
+              ? 'border-rose-400 focus-within:border-rose-500 focus-within:ring-1 focus-within:ring-rose-400'
+              : 'border-[#E8E8ED] hover:border-[#D6D6DC] focus-within:border-[var(--color-primary)] focus-within:ring-1 focus-within:ring-[var(--color-primary)]'
+          )}
+        >
+          {floatingLabel && (
+            <label
+              htmlFor={id}
+              className="absolute -top-2 left-3.5 bg-white px-1.5 text-[11px] font-semibold text-[#585866] leading-none pointer-events-none z-10"
+            >
+              {floatingLabel}
+            </label>
+          )}
           <select
+            id={id}
             ref={ref}
             className={cn(
-              'flex h-11 w-full appearance-none rounded-xl border bg-white px-3.5 py-2 text-sm text-slate-900 transition duration-150 pr-10',
-              'focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent',
-              'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500',
-              error
-                ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-400'
-                : 'border-slate-300 hover:border-slate-400',
+              'flex h-12 w-full appearance-none bg-transparent px-4 py-2 text-sm text-[#1D1D24] transition duration-150 pr-10 rounded-2xl',
+              'focus:outline-none',
+              'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400',
               className
             )}
             {...props}
@@ -46,22 +70,11 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
-            <svg
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#8E8E9C]">
+            <ChevronDown className="h-4 w-4" />
           </div>
         </div>
+
         {error && (
           <p className="mt-1.5 text-xs text-rose-600 font-medium flex items-center gap-1">
             <svg
@@ -79,11 +92,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           </p>
         )}
         {!error && helperText && (
-          <p className="mt-1 text-xs text-slate-500">{helperText}</p>
+          <p className="mt-1 text-xs text-[#8E8E9C]">{helperText}</p>
         )}
       </div>
     );
   }
 );
 Select.displayName = 'Select';
-

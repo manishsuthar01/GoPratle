@@ -73,7 +73,7 @@ export function PlannerFields() {
       {/* Planning Services Multi-select */}
       <div>
         <Label required>Planning Services Required</Label>
-        <p className="text-xs text-slate-500 mb-3">
+        <p className="text-xs text-[#7E7E8C] mb-3">
           Select one or more services you need the planner to manage.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -84,18 +84,18 @@ export function PlannerFields() {
                 key={service}
                 type="button"
                 onClick={() => toggleService(service)}
-                className={`flex items-center justify-between p-3 rounded-xl border text-left text-xs font-medium transition-all ${
+                className={`flex items-center justify-between p-3.5 rounded-2xl border text-left text-xs font-medium transition-all ${
                   isChecked
-                    ? 'bg-indigo-50/60 border-accent text-accent font-semibold shadow-xs ring-1 ring-accent'
-                    : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50/50'
+                    ? 'bg-[var(--color-primary-light)] border-[var(--color-primary)] text-[var(--color-primary)] font-semibold shadow-xs'
+                    : 'bg-white border-[#E8E8ED] text-[#1D1D24] hover:border-[#D6D6DC]'
                 }`}
               >
                 <span>{PLANNER_SERVICE_LABELS[service]}</span>
                 <div
                   className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${
                     isChecked
-                      ? 'bg-accent border-accent text-white'
-                      : 'border-slate-300 bg-white'
+                      ? 'bg-[var(--color-primary)] border-[var(--color-primary)] text-white'
+                      : 'border-[#D6D6DC] bg-white'
                   }`}
                 >
                   {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -177,4 +177,3 @@ export function PlannerFields() {
     </form>
   );
 }
-

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarDays, Mic2, Users2, CheckCircle2 } from 'lucide-react';
+import { CalendarDays, Mic2, Users2, Check } from 'lucide-react';
 import { RequirementCategory } from '@gopratle/shared';
 import { cn } from '@/lib/utils';
 
@@ -13,7 +13,6 @@ const categories = [
   {
     id: 'planner' as const,
     title: 'Event Planner',
-    subtitle: 'Coordination & Styling',
     description:
       'For users looking for professionals to organize, coordinate, and manage an event end-to-end.',
     icon: CalendarDays,
@@ -21,7 +20,6 @@ const categories = [
   {
     id: 'performer' as const,
     title: 'Performer',
-    subtitle: 'Artists & Entertainment',
     description:
       'For users looking for solo artists, musicians, DJs, live bands, comedians, or entertainment hosts.',
     icon: Mic2,
@@ -29,7 +27,6 @@ const categories = [
   {
     id: 'crew' as const,
     title: 'Crew',
-    subtitle: 'Technical & Operational',
     description:
       'For users looking for technical staff, sound/light operators, photographers, setup crew, and security.',
     icon: Users2,
@@ -54,10 +51,10 @@ export function CategorySelector({
               type="button"
               onClick={() => onChange(cat.id)}
               className={cn(
-                'relative flex flex-col text-left p-5 rounded-2xl border-2 transition-all duration-200 select-none cursor-pointer',
+                'relative flex flex-col text-left p-5 rounded-2xl border-2 transition-all duration-150 select-none cursor-pointer',
                 isSelected
-                  ? 'border-accent bg-indigo-50/40 shadow-sm ring-1 ring-accent'
-                  : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/60'
+                  ? 'border-[var(--color-primary)] bg-[var(--color-primary-light)] shadow-xs'
+                  : 'border-[#E8E8ED] bg-white hover:border-[#D6D6DC] hover:bg-[#FBFBFC]'
               )}
             >
               <div className="flex items-center justify-between w-full mb-3.5">
@@ -65,26 +62,25 @@ export function CategorySelector({
                   className={cn(
                     'w-10 h-10 rounded-xl flex items-center justify-center transition-colors',
                     isSelected
-                      ? 'bg-accent text-white shadow-xs'
-                      : 'bg-slate-100 text-slate-600'
+                      ? 'bg-[var(--color-primary)] text-white shadow-xs'
+                      : 'bg-[#F2F2F5] text-[#585866]'
                   )}
                 >
                   <Icon className="w-5 h-5" />
                 </div>
                 {isSelected ? (
-                  <CheckCircle2 className="w-5 h-5 text-accent fill-indigo-100" />
+                  <div className="w-5 h-5 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
                 ) : (
-                  <div className="w-5 h-5 rounded-full border-2 border-slate-300" />
+                  <div className="w-5 h-5 rounded-full border-2 border-[#D6D6DC]" />
                 )}
               </div>
 
-              <div className="font-bold text-base text-slate-900 mb-0.5">
+              <div className="font-bold text-base text-[#1D1D24] mb-1.5">
                 {cat.title}
               </div>
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-accent mb-2">
-                {cat.subtitle}
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-[#585866] leading-relaxed">
                 {cat.description}
               </p>
             </button>
@@ -97,4 +93,3 @@ export function CategorySelector({
     </div>
   );
 }
-

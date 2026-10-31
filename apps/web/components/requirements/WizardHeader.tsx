@@ -59,13 +59,12 @@ export function WizardHeader({ currentStep, category }: WizardHeaderProps) {
 
   return (
     <div className="mb-8">
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D24] tracking-tight mb-2">
         {title}
       </h2>
-      <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+      <p className="text-sm text-[#585866] leading-relaxed">
         {description}
       </p>
     </div>
   );
 }
-

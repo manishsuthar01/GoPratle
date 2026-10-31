@@ -12,16 +12,15 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       <label
         ref={ref}
         className={cn(
-          'block text-sm font-semibold text-slate-800 mb-1.5 select-none',
+          'block text-xs font-semibold text-[#585866] mb-1.5 select-none tracking-tight',
           className
         )}
         {...props}
       >
         {children}
-        {required && <span className="text-rose-500 ml-1 font-bold">*</span>}
+        {required && <span className="text-[var(--color-primary)] ml-1 font-bold">*</span>}
       </label>
     );
   }
 );
 Label.displayName = 'Label';
-

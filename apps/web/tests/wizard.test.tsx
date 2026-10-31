@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { useRequirementStore } from '../store/requirement-store';
 import { RequirementWizard } from '../components/requirements/RequirementWizard';
 import { getTodayDateString } from '@gopratle/shared';
@@ -88,21 +88,27 @@ describe('Requirement Wizard Frontend Tests', () => {
 
   // 5. Changing steps preserves values
   it('5. Changing steps preserves entered values', async () => {
-    const store = useRequirementStore.getState();
-    store.setEventBasics({
-      eventName: 'Grand Gala 2027',
-      location: 'Jaipur',
+    act(() => {
+      const store = useRequirementStore.getState();
+      store.setEventBasics({
+        eventName: 'Grand Gala 2027',
+        location: 'Jaipur',
+      });
+      store.setStep(1);
     });
-    store.setStep(1);
 
     const { rerender } = render(<RequirementWizard />);
     expect(screen.getByDisplayValue('Grand Gala 2027')).toBeInTheDocument();
 
     // Advance to step 2 and go back to step 1
-    store.setStep(2);
+    act(() => {
+      useRequirementStore.getState().setStep(2);
+    });
     rerender(<RequirementWizard />);
 
-    store.setStep(1);
+    act(() => {
+      useRequirementStore.getState().setStep(1);
+    });
     rerender(<RequirementWizard />);
 
     expect(screen.getByDisplayValue('Grand Gala 2027')).toBeInTheDocument();
