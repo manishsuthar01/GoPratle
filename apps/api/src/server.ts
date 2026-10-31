@@ -14,6 +14,18 @@ async function startServer(): Promise<void> {
         `Server running in ${env.NODE_ENV} mode on http://localhost:${env.PORT}`
       );
     });
+
+    server.on('error', async (error: NodeJS.ErrnoException) => {
+      if (error.code === 'EADDRINUSE') {
+        logger.error(
+          `Port ${env.PORT} is already in use. Please stop the process running on port ${env.PORT} or use a different port.`
+        );
+      } else {
+        logger.error({ error }, 'HTTP server encountered an error');
+      }
+      await disconnectDatabase();
+      process.exit(1);
+    });
   } catch (error) {
     logger.error({ error }, 'Fatal error during server startup');
     process.exit(1);
