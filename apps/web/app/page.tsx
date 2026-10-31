@@ -69,7 +69,7 @@ export default function LandingPage() {
         {/* Floating Cursor Pill 1 (Left - Crimson/Brand Token, No Green) */}
         <div className="hidden lg:flex items-center gap-2 absolute top-20 left-[10%] z-20">
           <div className="px-3.5 py-1.5 rounded-full bg-[var(--color-primary-light)] border border-[var(--color-primary-border)] text-[var(--color-primary)] text-xs font-semibold shadow-xs flex items-center gap-1.5 select-none">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
             <span>Event Planner Confirmed</span>
           </div>
           {/* Custom SVG pointer cursor */}
@@ -179,7 +179,7 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[var(--color-primary)] bg-[var(--color-primary-light)] px-2.5 py-1 rounded-full border border-[var(--color-primary-border)]">
-                    <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-ping" />
+                    <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
                     <span>Submitted</span>
                   </span>
                 </div>
