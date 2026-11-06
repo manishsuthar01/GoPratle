@@ -1,7 +1,6 @@
 # GoPratle — Event Requirement Studio
 ### Full-Stack Requirement Management Platform
 
-[![CI Pipeline](https://github.com/GoPratle/gopratle/actions/workflows/ci.yml/badge.svg)](https://github.com/GoPratle/gopratle/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
 ![Express](https://img.shields.io/badge/Express-4.21-lightgrey?logo=express)
